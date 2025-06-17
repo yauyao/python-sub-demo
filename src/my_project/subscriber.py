@@ -60,7 +60,7 @@ class Subscriber:
                 content = message['data']
                 print(f"收到訊息：{content}", flush=True)
                 c, e = self.count_characters(content)
-                print(f"中文字數：{c}, 英文字母數：{e}", flush=True)
+                # print(f"中文字數：{c}, 英文字母數：{e}", flush=True)
                 self.process_entry(content)
 
             current_minute = time.localtime().tm_min
