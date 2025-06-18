@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y git && apt-get clean
 WORKDIR /app
 
 # Clone GitHub 專案
-RUN git clone https://github.com/yauyao/python-sub-demo.git .
+RUN git clone --depth=1 https://github.com/yauyao/python-sub-demo.git .
 
 # 安裝 Python 套件
 RUN pip install --no-cache-dir -r requirements.txt

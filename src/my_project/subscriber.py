@@ -45,7 +45,7 @@ class Subscriber:
         print(f"Entries with 29 words: {self.word_count_29}")
         print(f"Entries with not 29 words: {self.word_count_not_29}")
         print("Minute segment counts:")
-        for segment in range(10):
+        for segment in range(5):
             print(f"{segment:02d}: {self.minute_segment_counts[segment]}")
 
         # Reset counts for the next interval
@@ -58,13 +58,13 @@ class Subscriber:
             message = self.pubsub.get_message()
             if message and message['type'] == 'message':
                 content = message['data']
-                print(f"收到訊息：{content}", flush=True)
+                # print(f"收到訊息：{content}", flush=True)
                 c, e = self.count_characters(content)
                 # print(f"中文字數：{c}, 英文字母數：{e}", flush=True)
                 self.process_entry(content)
 
             current_minute = time.localtime().tm_min
-            if current_minute % 10 == 0 and current_minute != last_logged_minute:
+            if current_minute % 5 == 0 and current_minute != last_logged_minute:
                 self.log_counts()
                 last_logged_minute = current_minute
 
